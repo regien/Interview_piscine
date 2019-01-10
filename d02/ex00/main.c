@@ -16,7 +16,7 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//sortStones(&stone);
+	sortStones(&stone);
 	//printStone(stone);
 
 	return (0);
