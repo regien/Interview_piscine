@@ -30,6 +30,7 @@ void	add_id(struct s_table *new, struct s_table **table)
 			;
 		iter->next = new;
 	}
+	printf("adding table with id = %d \n", (new)->id);
 }
 
 void	swap_id_tables(struct s_table *target, struct s_table *source)
@@ -47,6 +48,8 @@ void	swap_id_tables(struct s_table *target, struct s_table *source)
 	target->end = temp_end;
 }
 
+// problem with single values in a list
+
 struct	s_stone		*get_group(struct s_table **id_list, struct s_stone **list)
 {
 	struct s_stone		*iter = *list;
@@ -56,7 +59,7 @@ struct	s_stone		*get_group(struct s_table **id_list, struct s_stone **list)
 
 	if (iter)
 	{
-		holder_id = 0;
+		holder_id = iter->size;
 		start_group = iter;
 	}
 	while (iter)
@@ -64,7 +67,10 @@ struct	s_stone		*get_group(struct s_table **id_list, struct s_stone **list)
 		if (iter->size != holder_id)
 		{
 			add_id(new_id(holder_id, start_group, end_group), id_list);
-			return (iter); // another group incoming
+			holder_id = iter->size;
+			iter = iter->next;
+			*list = iter;
+			return (*list); // another group incoming
 		}
 		end_group = iter;
 		iter = iter->next;
@@ -81,16 +87,23 @@ void				sorted_table(struct s_table *id_list, int size_groups)
 //	if (id_list && id_list->next)
 //		second = id_list->next;
 
-	for(int i = 0 ; i < size_groups ; i++)
+	for(int i = 0 ; i < size_groups - 1; i++)
 	{
+		first = id_list;
+		second = first->next;
 		swapped = 0;
 //		second = id_list->next;
-//		for (int j = 0; j < size_groups - i ; ++j)
-//		{
-//			
-//			if (second > first)
-//				;
-//		}
+		for (int j = 0; j < size_groups - i - 1 ; ++j)
+		{
+
+			if (second->id < first->id)
+			{
+				swap_id_tables(first, second);
+				swapped = 1;
+			}
+			first = first->next;
+			second = first->next;
+		}
 		if (swapped == 0)
 			break;
 	}
@@ -115,11 +128,16 @@ void	sortStones(struct s_stone **stone)
 	struct s_table		*id_list = NULL;
 	int					size_groups = 0;
 
-	while(get_group(&id_list, stone) != NULL)
+	if (!(*stone) || !(stone[0]))
+		return ;
+
+	while(get_group(&id_list, &iter) != NULL)
 		size_groups++;
+	printf("finish making the list\n");
 
 	print_s_tables(id_list);
+	printf("Sorted list\n");
 	sorted_table(id_list, size_groups);
-
+	print_s_tables(id_list);
 
 }
