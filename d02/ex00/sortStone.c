@@ -31,7 +31,6 @@ void	add_id(struct s_table *new, struct s_table **table)
 			;
 		iter->next = new;
 	}
-	printf("adding table with id = %d \n", (new)->id);
 }
 
 void	swap_id_tables(struct s_table *target, struct s_table *source)
@@ -60,7 +59,6 @@ struct	s_stone		*get_group(struct s_table **id_list, struct s_stone **list)
 
 	if (iter)
 	{
-		printf("setting values  - %d \n", iter->size);
 		holder_id = iter->size;
 		start_group = iter;
 		end_group = iter;
@@ -119,16 +117,6 @@ void				sorted_table(struct s_table *id_list, int size_groups)
 	}
 }
 
-void	print_s_tables(struct s_table *tables)
-{
-	struct s_table		*iter = tables;
-
-	while (iter)
-	{
-		printf("%d\n", iter->id);
-		iter = iter->next;
-	}
-}
 
 struct s_stone	*relinking(struct s_table *tabla, struct s_stone *stones)
 {
@@ -146,7 +134,18 @@ struct s_stone	*relinking(struct s_table *tabla, struct s_stone *stones)
 	return (holder);
 }
 
-// next group and then keep iterating
+/* test function
+void	print_s_tables(struct s_table *tables)
+{
+	struct s_table		*iter = tables;
+
+	while (iter)
+	{
+		printf("%d\n", iter->id);
+		iter = iter->next;
+	}
+}
+*/
 
 void	sortStones(struct s_stone **stone)
 {
@@ -159,12 +158,7 @@ void	sortStones(struct s_stone **stone)
 
 	while(get_group(&id_list, &iter) != NULL)
 		size_groups++;
-	printf("finish making the list\n");
-
-	print_s_tables(id_list);
-	printf("Sorted list\n");
 	sorted_table(id_list, size_groups);
-	print_s_tables(id_list);
 	*stone = relinking(id_list, *stone);
 
 }
