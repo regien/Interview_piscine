@@ -1,0 +1,2 @@
+time: O(G^2) where G is the number of groups - worst scenario is O(N^2) where all the group are singles
+space: O(G)

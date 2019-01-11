@@ -17,7 +17,8 @@ int main(void)
 	launch your test here
 	--------------------*/
 	sortStones(&stone);
-	//printStone(stone);
+	printf("result\n");
+	printStone(stone);
 
 	return (0);
 }

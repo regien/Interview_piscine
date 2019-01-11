@@ -15,6 +15,7 @@ struct	s_table		*new_id(int id, struct s_stone *start, struct s_stone *end)
 	holder->id = id;
 	holder->start = start;
 	holder->end = end;
+	holder->end->next = NULL;
 	return (holder);
 }
 
@@ -59,18 +60,27 @@ struct	s_stone		*get_group(struct s_table **id_list, struct s_stone **list)
 
 	if (iter)
 	{
+		printf("setting values  - %d \n", iter->size);
 		holder_id = iter->size;
 		start_group = iter;
+		end_group = iter;
 	}
 	while (iter)
 	{
 		if (iter->size != holder_id)
 		{
 			add_id(new_id(holder_id, start_group, end_group), id_list);
-			holder_id = iter->size;
-			iter = iter->next;
+//			holder_id = iter->size;
+//			iter = iter->next;
 			*list = iter;
 			return (*list); // another group incoming
+		}
+		else if (!(iter->next))
+		{
+			end_group = iter;
+			add_id(new_id(holder_id, start_group, end_group), id_list);
+			*list = iter->next;
+			return (iter->next);
 		}
 		end_group = iter;
 		iter = iter->next;
@@ -93,7 +103,7 @@ void				sorted_table(struct s_table *id_list, int size_groups)
 		second = first->next;
 		swapped = 0;
 //		second = id_list->next;
-		for (int j = 0; j < size_groups - i - 1 ; ++j)
+		for (int j = 0; j < size_groups - i; ++j)
 		{
 
 			if (second->id < first->id)
@@ -120,6 +130,22 @@ void	print_s_tables(struct s_table *tables)
 	}
 }
 
+struct s_stone	*relinking(struct s_table *tabla, struct s_stone *stones)
+{
+	struct s_stone		*holder = NULL;
+	struct s_table		*iter = tabla;
+
+	if (!(tabla))
+		return (NULL);
+	holder = tabla->start;
+	while(iter && iter->next)
+	{
+		iter->end->next = iter->next->start;
+		iter = iter->next;
+	}
+	return (holder);
+}
+
 // next group and then keep iterating
 
 void	sortStones(struct s_stone **stone)
@@ -139,5 +165,6 @@ void	sortStones(struct s_stone **stone)
 	printf("Sorted list\n");
 	sorted_table(id_list, size_groups);
 	print_s_tables(id_list);
+	*stone = relinking(id_list, *stone);
 
 }
