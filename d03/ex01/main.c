@@ -16,10 +16,10 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-//	struct s_node *root;
+	struct s_node *root;
 
-//	root = createBST(arr, len);
-//	printBinaryTree(root);
+	root = createBST(arr, len);
+	printBinaryTree(root);
 
 	return (0);
 }
