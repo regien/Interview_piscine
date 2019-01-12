@@ -1,0 +1,1 @@
+O(n) time and space, because you iterate through the whole tree and call the stack frame through recursive functions the same amount of times
