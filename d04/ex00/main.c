@@ -22,10 +22,10 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//char *sum;
+	char *sum;
 
-	//sum = getSum(a, b);
-	//printf("%s (%d)\n", sum, toInt(sum));
+	sum = getSum(a, b);
+	printf("%s (%d)\n", sum, toInt(sum));
 
 	return (0);
 }
