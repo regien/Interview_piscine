@@ -21,7 +21,7 @@ int			toInt(char *a)
 
 char		*getSum(char *a, char *b)
 {
-	char	*result = calloc(1, sizeof(char) * 6);
+	char	*result = calloc(1, (sizeof(char) * 6) + 1);
 	int		carry = 0;
 
 	for (int i = 5; i >= 0; i--)
