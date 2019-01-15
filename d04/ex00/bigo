@@ -1,2 +1,0 @@
-O(n) in time because we iterate once to operate and save the answer in the array
-O(n) in space where n is the number of characters in the array (which is always 6)
