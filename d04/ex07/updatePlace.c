@@ -7,5 +7,6 @@
 
 unsigned int updatePlace(unsigned int parkingRow, int pos, int value)
 {
-	return (parkingRow | (((parkingRow ^ parkingRow) | (value & 1)) << pos));
+	return ((parkingRow & (~(0x01 << pos))) | ((value & 1) << pos));
 }
+
