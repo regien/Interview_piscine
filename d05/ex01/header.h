@@ -1,5 +1,5 @@
 #ifndef HEADER_H
-# define HEADER_H
+#define HEADER_H
 
 /*--------------------------------
   !! required structure
@@ -26,6 +26,5 @@ struct s_prices *readList();
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
 
 #endif

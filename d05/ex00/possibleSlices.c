@@ -5,31 +5,27 @@
 
 #include "header.h"
 
-void		permutations(int *arr, int i, int j)
+void		permutations(struct s_array *head, int current)
 {
-	int		holder = arr[i];
+	struct s_array		*copy;
 
-	arr[i] = arr[j];
-	arr[j] = holder;
-}
-
-void		permutations(struct s_array *base, int currentindex)
-{
-	
+	if (current == 0)
+	{
+		printArray(head);
+		free(head);
+		return ;
+	}
+	for (int i = 0; i < current; ++i)
+	{
+		copy = arrayClone(head);
+		arrayAppend(copy, current);
+		permutations(copy, current);
+	}
 }
 
 void		printPossibleSlices(int pizzaSize)
 {
 	struct s_array		*holder = arrayInit();
 
-	for (int i = 1; pizzaSize > 0; ++i, pizzaSize--)
-	{
-		arrayAppend(holder, i);
-		if (holder.sum == 4)
-			permutations(holder, 0)
-	}
-		
-
-	
-	free(holder);
+	permutations(holder, pizzaSize);
 }
