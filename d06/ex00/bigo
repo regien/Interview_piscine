@@ -1,0 +1,2 @@
+O(n ^ 2) in time and O(1) in space
+where n is the number of elements in the array
