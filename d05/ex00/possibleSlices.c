@@ -11,7 +11,7 @@ void		permutations(struct s_array *head, int current)
 
 	if (current == 0)
 	{
-		printArray(head);
+		arrayPrint(head);
 		free(head);
 		return ;
 	}
