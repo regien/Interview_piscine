@@ -19,12 +19,12 @@ int main(void)
 	--------------------*/
 
 	// //sort the array
-	// heapSort(arts, n);
+	heapSort(arts, n);
 
-	// //print sorted array
-	// for (int i = 0; arts[i]; i++) {
-	// 	printf("%s => %d\n", arts[i]->name, arts[i]->price);
-	// }
+	//print sorted array
+	for (int i = 0; arts[i]; i++) {
+		printf("%s => %d\n", arts[i]->name, arts[i]->price);
+	}
 
 	return (0);
 }
