@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	// printf("%lf\n", probabilityWin(initDollars, desiredDollars, nbGame));
+	printf("%lf\n", probabilityWin(initDollars, desiredDollars, nbGame));
 	return (0);
 }
 
@@ -31,4 +31,3 @@ int main(int ac, char **av)
 
 // Function used for the test
 // Don't go further :)
-
