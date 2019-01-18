@@ -8,7 +8,7 @@
 
 /*
 ** do the same and calculate the steps
-** steps = log2(dollarswanted)
+** steps = ceil(log2(dollarswanted / initial_money));
 */
 
 double	helper(double initial_money, double target_money, int nb_games)

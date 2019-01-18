@@ -1,0 +1,3 @@
+O(n) time, where n is the minimun ammount of people to have 2 choosing the same number
+in the designated porcentage
+O(1) in space
