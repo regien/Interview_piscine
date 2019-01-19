@@ -22,12 +22,12 @@ int main(void)
 	launch your test here
 	--------------------*/
 
-	// res = maxSlidingWindow(arr, n, k);
-	// if (res) {
-	// 	for (int i = 0; i < res->length; i++)
-	// 		printf("%d ", res->max[i]);
-	// 	printf("\n");
-	// }
+	res = maxSlidingWindow(arr, n, k);
+	if (res) {
+		for (int i = 0; i < res->length; i++)
+			printf("%d ", res->max[i]);
+		printf("\n");
+	}
 
 	return (0);
 }
