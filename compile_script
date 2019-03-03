@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# compile script from 42 cdn
 import os
 import sys
 
