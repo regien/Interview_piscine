@@ -8,7 +8,9 @@
 
 struct	s_node			*ancestro = NULL;
 
-// flag 0 nothing, 1 s1 found, 2 s2 found, 3 todo, then set 3
+/*
+** flag 0 nothing, 1 s1 found, 2 s2 found, 3 todo, then set 3
+*/
 int			traver_sing(struct s_node *root, char *s1, char *s2, int flag)
 {
 	int				new_flag = flag;
